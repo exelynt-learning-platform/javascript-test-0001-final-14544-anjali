@@ -1,34 +1,21 @@
-let n = 5;
-for (let i = 1; i <= n; i++) {
+const n = 5;
+const totalRows = 2 * n - 1;
 
-    for (let j = i; j < n; j++) {
-        process.stdout.write(" ");
+for (let i = 1; i <= totalRows; i++) {
+
+    let row = "";
+    let starsRow = i <= n ? i : totalRows - i + 1;
+
+    for (let s = 1; s <= n - starsRow; s++) {
+        row += " ";
     }
-    process.stdout.write("*");
-
-    if (i > 1) {
-        for (let j = 1; j <= (2 * i - 3); j++) {
-            process.stdout.write(" ");
+    row += "*";
+    if (starsRow > 1) {
+        for (let s = 1; s <= (starsRow - 1) * 2 - 1; s++) {
+            row += " ";
         }
-        process.stdout.write("*");
+        row += "*";
     }
 
-    console.log();
-}
-for (let i = n - 1; i >= 1; i--) {
-
-    for (let j = n; j > i; j--) {
-        process.stdout.write(" ");
-    }
-
-    process.stdout.write("*");
-
-    if (i > 1) {
-        for (let j = 1; j <= (2 * i - 3); j++) {
-            process.stdout.write(" ");
-        }
-        process.stdout.write("*");
-    }
-
-    console.log();
+    console.log(row);
 }
